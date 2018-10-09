@@ -1,14 +1,15 @@
 import urllib
 import json
 
-serviceurl = 'http://maps.googleapis.com/maps/api/geocode/json?'
+serviceurl = 'https://maps.googleapis.com/maps/api/geocode/json?'
 
 while True:
     address = raw_input('Enter location: ')
     if len(address) < 1 : break
-
-    url = serviceurl + urllib.urlencode({'sensor':'false', 'address': address})
-    #print 'Retrieving', url
+    GoogleAPIkey = '>>>>>>Enter your Google geolocate API key here<<<<<<<'
+    url = serviceurl + urllib.urlencode({'key':GoogleAPIkey,'sensor':'false',
+ 'address': address})
+    print url
     uh = urllib.urlopen(url)
     data = uh.read()
     #print 'Retrieved',len(data),'characters'
@@ -28,7 +29,7 @@ while True:
     print "lon:", lon
     location = js['results'][0]['formatted_address']
     #print location
-    api_key = 'a61a3f82abf9bbcc88a393a8c9c4a091'
+    api_key = '>>>enter your free api.forecast.io API key here<<<<<'
 
     weatherURL = 'https://api.forecast.io/forecast/%s/%s,%s?'  %(api_key,lat,lon)
     #print weatherURL
